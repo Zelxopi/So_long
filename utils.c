@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtrembla <mtrembla@student.42quebec>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/10 15:55:35 by mtrembla          #+#    #+#             */
-/*   Updated: 2022/07/06 10:04:26 by mtrembla         ###   ########.fr       */
+/*   Created: 2022/07/06 09:50:49 by mtrembla          #+#    #+#             */
+/*   Updated: 2022/07/06 09:53:46 by mtrembla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libft/libft.h"
+#include "so_long.h"
+#include <fcntl.h>
+#include <stdio.h>
 
-//find string's length
-size_t	ft_strlen(const char *s)
+void	ft_error(char *str)
 {
-	size_t	len;
-
-	len = 0;
-	if (!s)
-		return (0);
-	while (*s++)
-		len++;
-	return (len);
+	ft_putstr_fd("Error\n", 2);
+	ft_putstr_fd(str, 2);
+	ft_putstr_fd("\n", 2);
+	exit(0);
 }
