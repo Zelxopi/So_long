@@ -6,14 +6,12 @@
 /*   By: mtrembla <mtrembla@student.42quebec>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 13:32:18 by mtrembla          #+#    #+#             */
-/*   Updated: 2022/07/06 10:02:59 by mtrembla         ###   ########.fr       */
+/*   Updated: 2022/07/06 10:16:38 by mtrembla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "so_long.h"
-#include <fcntl.h>
-#include <stdio.h>
 
 int	ft_map_is_square(parsing *map)
 {
@@ -44,28 +42,24 @@ int	ft_peandc(parsing *map)
 	char	*str;
 	int		fd;
 	int		heightcpy;
-	int		personnage = 0;
-	int		sortie = 0;
-	int		collectible = 0;
 
 	heightcpy = map->map_height;
 	fd = open(map->mapfile, O_RDONLY);
 	while (heightcpy--)
 	{
 		str = ((char *)ft_gnl(fd));
-		while (*str)
+		while (*str++)
 		{
 			if (*str == 'P')
-				personnage++;
+				map->personnage++;
 			if (*str == 'E')
-				sortie++;
+				map->sortie++;
 			if (*str == 'C')
-				collectible++;
-			str++;
+				map->collectible++;
 		}
 	}
 	close(fd);
-	if (personnage != 1 || sortie < 1 || collectible < 1)
+	if (map->personnage != 1 || map->sortie < 1 || map->collectible < 1)
 		ft_error("Erreur au niveau du nombre de P, E ou C");
 	return (1);
 }
