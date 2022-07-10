@@ -6,14 +6,13 @@
 /*   By: mtrembla <mtrembla@student.42quebec>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 13:32:18 by mtrembla          #+#    #+#             */
-/*   Updated: 2022/07/06 10:16:38 by mtrembla         ###   ########.fr       */
+/*   Updated: 2022/07/08 15:48:32 by mtrembla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
 #include "so_long.h"
 
-int	ft_map_is_square(parsing *map)
+int	ft_map_is_square(t_parsing *map)
 {
 	int		fd;
 	int		line;
@@ -37,7 +36,7 @@ int	ft_map_is_square(parsing *map)
 	return (1);
 }
 
-int	ft_peandc(parsing *map)
+int	ft_peandc(t_parsing *map)
 {
 	char	*str;
 	int		fd;
@@ -64,7 +63,7 @@ int	ft_peandc(parsing *map)
 	return (1);
 }
 
-int	ft_topandbottom(parsing *map)
+int	ft_topandbottom(t_parsing *map)
 {
 	int		fd;
 	char	*str;
@@ -92,7 +91,7 @@ int	ft_topandbottom(parsing *map)
 	return (1);
 }
 
-int	ft_firstandlast(parsing *map)
+int	ft_firstandlast(t_parsing *map)
 {
 	int		fd;
 	char	*str;
@@ -117,7 +116,7 @@ int	ft_firstandlast(parsing *map)
 	return (1);
 }
 
-int	ft_mapname(parsing *map)
+int	ft_mapname(t_parsing *map)
 {
 	char	*str;
 	char	*ber;

@@ -6,15 +6,18 @@
 /*   By: mtrembla <mtrembla@student.42quebec>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 11:29:46 by mtrembla          #+#    #+#             */
-/*   Updated: 2022/07/06 10:40:01 by mtrembla         ###   ########.fr       */
+/*   Updated: 2022/07/10 10:42:52 by mtrembla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
+#include "minilibx/mlx.h"
 #include <fcntl.h>
 #include <stdio.h>
 
-typedef struct 	parsing
+#define PIXEL 70
+
+typedef struct 	s_parsing
 {
 	int	map_height;
 	char *mapfile;
@@ -22,13 +25,33 @@ typedef struct 	parsing
 	int personnage;
 	int	sortie;
 	int collectible;
-}	parsing;
+	char	*str;
+	int		fd;
+}	t_parsing;
+
+typedef struct	s_image 
+{
+	void	*dino;
+	void	*chicken;
+	void	*grass;
+	void	*wall;
+	void	*exit;
+	int		width;
+	int		height;
+	void	*mlx;
+	void	*mlx_win;
+	int		x;
+	int		y;
+}	t_image;
+
 
 void	ft_error(char *str);
-int		ft_map_is_square(parsing *map);
-int		ft_peandc(parsing *map);
-int		ft_topandbottom(parsing *map);
-int		ft_firstandlast(parsing *map);
-int		ft_mapname(parsing *map);
-void	ft_I_DO_DECLARE(parsing *map);
-int		ft_parsing(parsing *map);
+int		ft_map_is_square(t_parsing *map);
+int		ft_peandc(t_parsing *map);
+int		ft_topandbottom(t_parsing *map);
+int		ft_firstandlast(t_parsing *map);
+int		ft_mapname(t_parsing *map);
+void	ft_I_DO_DECLARE(t_parsing *map, t_image *img);
+int		ft_parsing(char *k, t_parsing *map);
+void	ft_map_print(t_parsing *map, t_image *img);
+int 	ft_tell_me_whats_there(int x, int y, t_parsing *map);
