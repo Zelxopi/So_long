@@ -38,26 +38,26 @@ int	ft_map_is_square(t_parsing *map)
 
 int	ft_peandc(t_parsing *map)
 {
-	char	*str;
-	int		fd;
-	int		heightcpy;
-
-	heightcpy = map->map_height;
-	fd = open(map->mapfile, O_RDONLY);
-	while (heightcpy--)
+	map->heightcpy = map->map_height;
+	map->fd = open(map->mapfile, O_RDONLY);
+	while (map->heightcpy--)
 	{
-		str = ((char *)ft_gnl(fd));
-		while (*str++)
+		map->str = ((char *)ft_gnl(map->fd));
+		while (*map->str++)
 		{
-			if (*str == 'P')
+			if (*map->str != '1' && *map->str != '0' && *map->str != 'P'
+				&& *map->str != 'E' && *map->str != 'C' && *map->str != '\n'
+				&& *map->str != '\0')
+				ft_error("Caractère inconnu dans la carte");
+			if (*map->str == 'P')
 				map->personnage++;
-			if (*str == 'E')
+			if (*map->str == 'E')
 				map->sortie++;
-			if (*str == 'C')
+			if (*map->str == 'C')
 				map->collectible++;
 		}
 	}
-	close(fd);
+	close(map->fd);
 	if (map->personnage != 1 || map->sortie < 1 || map->collectible < 1)
 		ft_error("Erreur au niveau du nombre de P(max1), E ou C(min1)");
 	return (1);
