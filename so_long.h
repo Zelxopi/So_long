@@ -6,7 +6,7 @@
 /*   By: mtrembla <mtrembla@student.42quebec>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 11:29:46 by mtrembla          #+#    #+#             */
-/*   Updated: 2022/07/11 16:46:50 by mtrembla         ###   ########.fr       */
+/*   Updated: 2022/07/11 16:54:32 by mtrembla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <fcntl.h>
 # include <stdio.h>
 
-#define PIXEL 70
+# define PIXEL 70
 
 typedef struct s_parsing
 {
@@ -76,7 +76,7 @@ void	ft_down(t_parsing *map, t_image *img);
 char	**ft_mapcpy(t_parsing *map);
 int		ft_collectibles(int line, int col, t_parsing *map);
 void	ft_paint(t_image *img, int a);
-int		ft_bankruptcy();
+int		ft_bankruptcy(t_struct *truc);
 void	ft_mlx_declare(t_image *img);
 
 #endif

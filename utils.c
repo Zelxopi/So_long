@@ -6,7 +6,7 @@
 /*   By: mtrembla <mtrembla@student.42quebec>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 09:50:49 by mtrembla          #+#    #+#             */
-/*   Updated: 2022/07/11 16:47:04 by mtrembla         ###   ########.fr       */
+/*   Updated: 2022/07/11 17:10:08 by mtrembla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,16 +38,15 @@ void	ft_mlx_declare(t_image *img)
 
 int	ft_bankruptcy(t_struct *truc)
 {
+	int			i;
 	t_parsing	*map;
 	t_image		*img;
 
+	i = 0;
 	img = &truc->img;
 	map = &truc->map;
-	int i;
-
-	i = 0;
 	while (map->mapcpy[i])
-		free(map->mapcpy);
+		free(map->mapcpy[i++]);
 	free(map->mapcpy);
 	mlx_destroy_image(img->mlx, img->wall);
 	mlx_destroy_image(img->mlx, img->grass);

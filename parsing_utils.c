@@ -6,7 +6,7 @@
 /*   By: mtrembla <mtrembla@student.42quebec>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 13:32:18 by mtrembla          #+#    #+#             */
-/*   Updated: 2022/07/11 14:20:46 by mtrembla         ###   ########.fr       */
+/*   Updated: 2022/07/11 17:22:36 by mtrembla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ int	ft_mapname(t_parsing *map)
 		ft_error("mauvais nom de map");
 	ber = ".ber";
 	str = ft_strrchr(map->mapfile, '.');
-	if (ft_strncmp(str, ber, 7) != 0)
+	if (!str || ft_strncmp(str, ber, 7) != 0)
 		ft_error("Ça a pas l'air d'un '.ber' ton affaire");
 	return (1);
 }

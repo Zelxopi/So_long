@@ -6,7 +6,7 @@
 /*   By: mtrembla <mtrembla@student.42quebec>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 11:18:07 by mtrembla          #+#    #+#             */
-/*   Updated: 2022/07/11 16:47:11 by mtrembla         ###   ########.fr       */
+/*   Updated: 2022/07/11 17:07:58 by mtrembla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	ft_keyhook(int keycode, t_struct *truc)
 	if (keycode == 1)
 		ft_down(map, img);
 	if (keycode == 53)
-		exit(0);
+		ft_bankruptcy(truc);
 	return (0);
 }
 
