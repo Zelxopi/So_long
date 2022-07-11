@@ -6,17 +6,15 @@
 /*   By: mtrembla <mtrembla@student.42quebec>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 09:50:19 by mtrembla          #+#    #+#             */
-/*   Updated: 2022/07/11 13:36:58 by mtrembla         ###   ########.fr       */
+/*   Updated: 2022/07/11 14:20:45 by mtrembla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "so_long.h"
 
-int	ft_parsing(char *k, t_struct *truc)
+int	ft_parsing(char *k, t_parsing *map)
 {
-	t_parsing *map;
-	map = &truc->map;
 	map->mapfile = k;
 	if (ft_mapname(map) == 1 && ft_map_is_square(map) == 1
 		&& ft_peandc(map) == 1 && ft_topandbottom(map) == 1
@@ -25,13 +23,3 @@ int	ft_parsing(char *k, t_struct *truc)
 	else
 		return (-1);
 }
-
-/*int	main(int argc, char **argv)
-{
-	parsing		*map;
-
-	(void)argc;
-	map = malloc(sizeof(parsing));
-	map->mapfile = argv[1];
-	printf("%d\n", ft_parsing(map));
-}*/

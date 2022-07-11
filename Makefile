@@ -6,7 +6,7 @@
 #    By: mtrembla <mtrembla@student.42quebec>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/06 10:30:18 by mtrembla          #+#    #+#              #
-#    Updated: 2022/07/10 11:20:19 by mtrembla         ###   ########.fr        #
+#    Updated: 2022/07/11 14:20:43 by mtrembla         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = so_long
 SRCS = 	parsing.c \
 		parsing_utils.c \
 		utils.c \
-		window.c \
+		main.c \
 		move.c \
 
 LIB = make -C ./libft

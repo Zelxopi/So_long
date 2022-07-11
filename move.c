@@ -6,7 +6,7 @@
 /*   By: mtrembla <mtrembla@student.42quebec>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 11:18:07 by mtrembla          #+#    #+#             */
-/*   Updated: 2022/07/11 13:37:11 by mtrembla         ###   ########.fr       */
+/*   Updated: 2022/07/11 14:20:49 by mtrembla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,101 +14,74 @@
 
 int	ft_keyhook(int keycode, t_struct *truc)
 {
+	t_image	*img;
+	t_parsing	*map;
+
+	img = &truc->img;
+	map = &truc->map;
 	if (keycode == 124)
-	ft_right(truc);
+	ft_right(map, img);
 	if (keycode == 123)
-	ft_left(truc);
+	ft_left(map, img);
 	if (keycode == 126)
-	ft_up(truc);
+	ft_up(map, img);
 	if (keycode == 125)
-	ft_down(truc);
+	ft_down(map, img);
 	return(0);
 }
 
-void	ft_right(t_struct *truc)
+void	ft_right(t_parsing *map, t_image *img)
 {
-	t_image	*img;
-	t_position	*pos;
-	t_parsing	*map;
-
-	img = &truc->img;
-	pos = &truc->pos;
-	map = &truc->map;
-	//printf("%c\n", ft_collectibles(pos->playery, pos->playerx + 1, map));
-	if(ft_collectibles(pos->playery, pos->playerx + 1, map) != '1')
+	if(ft_collectibles(map->playery, map->playerx + 1, map) != '1')
 	{
-		mlx_put_image_to_window(img->mlx, img->mlx_win, img->grass, pos->playerx*PIXEL, pos->playery*PIXEL);
-		if(ft_collectibles(pos->playery, pos->playerx, map) == 'E')
-		mlx_put_image_to_window(img->mlx, img->mlx_win, img->exit, pos->playerx*PIXEL, pos->playery*PIXEL);
-		pos->playerx++;
-		mlx_put_image_to_window(img->mlx, img->mlx_win, img->dino, pos->playerx*PIXEL, pos->playery*PIXEL);
-		if(ft_collectibles(pos->playery, pos->playerx, map) == 'E' && map->collectible == 0)
+		mlx_put_image_to_window(img->mlx, img->mlx_win, img->grass, map->playerx*PIXEL, map->playery*PIXEL);
+		if(ft_collectibles(map->playery, map->playerx, map) == 'E')
+		mlx_put_image_to_window(img->mlx, img->mlx_win, img->exit, map->playerx*PIXEL, map->playery*PIXEL);
+		map->playerx++;
+		mlx_put_image_to_window(img->mlx, img->mlx_win, img->dino, map->playerx*PIXEL, map->playery*PIXEL);
+		if(ft_collectibles(map->playery, map->playerx, map) == 'E' && map->collectible == 0)
 		exit(0);
 	}
 }
 
-void	ft_left(t_struct *truc)
+void	ft_left(t_parsing *map, t_image *img)
 {
-	t_image	*img;
-	t_position	*pos;
-	t_parsing	*map;
-
-	img = &truc->img;
-	pos = &truc->pos;
-	map = &truc->map;
-	//printf("%c\n", ft_collectibles(pos->playery, pos->playerx - 1, map));
-	if(ft_collectibles(pos->playery, pos->playerx - 1, map) != '1')
+	if(ft_collectibles(map->playery, map->playerx - 1, map) != '1')
 	{
-		mlx_put_image_to_window(img->mlx, img->mlx_win, img->grass, pos->playerx*PIXEL, pos->playery*PIXEL);
-		if(ft_collectibles(pos->playery, pos->playerx, map) == 'E')
-		mlx_put_image_to_window(img->mlx, img->mlx_win, img->exit, pos->playerx*PIXEL, pos->playery*PIXEL);
-		pos->playerx--;
-		mlx_put_image_to_window(img->mlx, img->mlx_win, img->dino, pos->playerx*PIXEL, pos->playery*PIXEL);
-		if(ft_collectibles(pos->playery, pos->playerx, map) == 'E' && map->collectible == 0)
+		mlx_put_image_to_window(img->mlx, img->mlx_win, img->grass, map->playerx*PIXEL, map->playery*PIXEL);
+		if(ft_collectibles(map->playery, map->playerx, map) == 'E')
+		mlx_put_image_to_window(img->mlx, img->mlx_win, img->exit, map->playerx*PIXEL, map->playery*PIXEL);
+		map->playerx--;
+		mlx_put_image_to_window(img->mlx, img->mlx_win, img->dino, map->playerx*PIXEL, map->playery*PIXEL);
+		if(ft_collectibles(map->playery, map->playerx, map) == 'E' && map->collectible == 0)
 		exit(0);
 	}
 }
 
-void	ft_up(t_struct *truc)
+void	ft_up(t_parsing *map, t_image *img)
 {
-	t_image	*img;
-	t_position	*pos;
-	t_parsing	*map;
-
-	img = &truc->img;
-	pos = &truc->pos;
-	map = &truc->map;
-	//printf("%c\n", ft_collectibles(pos->playery - 1, pos->playerx, map));
-	if(ft_collectibles(pos->playery - 1, pos->playerx, map) != '1')
+	if(ft_collectibles(map->playery - 1, map->playerx, map) != '1')
 	{
-		mlx_put_image_to_window(img->mlx, img->mlx_win, img->grass, pos->playerx*PIXEL, pos->playery*PIXEL);
-		if(ft_collectibles(pos->playery, pos->playerx, map) == 'E')
-		mlx_put_image_to_window(img->mlx, img->mlx_win, img->exit, pos->playerx*PIXEL, pos->playery*PIXEL);
-		pos->playery--;
-		mlx_put_image_to_window(img->mlx, img->mlx_win, img->dino, pos->playerx*PIXEL, pos->playery*PIXEL);
-		if(ft_collectibles(pos->playery, pos->playerx, map) == 'E' && map->collectible == 0)
+		mlx_put_image_to_window(img->mlx, img->mlx_win, img->grass, map->playerx*PIXEL, map->playery*PIXEL);
+		if(ft_collectibles(map->playery, map->playerx, map) == 'E')
+		mlx_put_image_to_window(img->mlx, img->mlx_win, img->exit, map->playerx*PIXEL, map->playery*PIXEL);
+		map->playery--;
+		mlx_put_image_to_window(img->mlx, img->mlx_win, img->dino, map->playerx*PIXEL, map->playery*PIXEL);
+		if(ft_collectibles(map->playery, map->playerx, map) == 'E' && map->collectible == 0)
 		exit(0);
 	}
 }
 
-void	ft_down(t_struct *truc)
+void	ft_down(t_parsing *map, t_image *img)
 {
-	t_image	*img;
-	t_position	*pos;
-	t_parsing	*map;
-
-	img = &truc->img;
-	pos = &truc->pos;
-	map = &truc->map;
-	//printf("%c\n", ft_collectibles(pos->playery + 1, pos->playerx, map));
-	if(ft_collectibles(pos->playery + 1, pos->playerx, map) != '1')
+	if(ft_collectibles(map->playery + 1, map->playerx, map) != '1')
 	{
-		mlx_put_image_to_window(img->mlx, img->mlx_win, img->grass, pos->playerx*PIXEL, pos->playery*PIXEL);
-		if(ft_collectibles(pos->playery, pos->playerx, map) == 'E')
-		mlx_put_image_to_window(img->mlx, img->mlx_win, img->exit, pos->playerx*PIXEL, pos->playery*PIXEL);
-		pos->playery++;
-		mlx_put_image_to_window(img->mlx, img->mlx_win, img->dino, pos->playerx*PIXEL, pos->playery*PIXEL);
-		if(ft_collectibles(pos->playery, pos->playerx, map) == 'E' && map->collectible == 0)
+		mlx_put_image_to_window(img->mlx, img->mlx_win, img->grass, map->playerx*PIXEL, map->playery*PIXEL);
+		if(ft_collectibles(map->playery, map->playerx, map) == 'E')
+		mlx_put_image_to_window(img->mlx, img->mlx_win, img->exit, map->playerx*PIXEL, map->playery*PIXEL);
+		map->playery++;
+		mlx_put_image_to_window(img->mlx, img->mlx_win, img->dino, map->playerx*PIXEL, map->playery*PIXEL);
+		if(ft_collectibles(map->playery, map->playerx, map) == 'E' && map->collectible == 0)
 		exit(0);
 	}
 }
