@@ -6,7 +6,7 @@
 /*   By: mtrembla <mtrembla@student.42quebec>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 13:32:18 by mtrembla          #+#    #+#             */
-/*   Updated: 2022/07/11 17:22:36 by mtrembla         ###   ########.fr       */
+/*   Updated: 2022/07/11 18:38:02 by mtrembla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	ft_peandc(t_parsing *map)
 	}
 	close(fd);
 	if (map->personnage != 1 || map->sortie < 1 || map->collectible < 1)
-		ft_error("Erreur au niveau du nombre de P, E ou C");
+		ft_error("Erreur au niveau du nombre de P(max1), E ou C(min1)");
 	return (1);
 }
 
@@ -75,7 +75,7 @@ int	ft_topandbottom(t_parsing *map)
 	while (*str)
 	{
 		if (*str != '1')
-			ft_error("Check tes murs du haut");
+			ft_error("Le haut de la carte doit être composé de wall(1)");
 		str++;
 	}
 	while (--heightcpy > 1)
@@ -84,7 +84,7 @@ int	ft_topandbottom(t_parsing *map)
 	while (*str)
 	{
 		if (*str != '1')
-			ft_error("Check tes murs du bas");
+			ft_error("Le bas de la carte doit être composé de wall(1)");
 		str++;
 	}
 	close(fd);
@@ -104,12 +104,12 @@ int	ft_firstandlast(t_parsing *map)
 	{	
 		str = ((char *)ft_gnl(fd));
 		if (*str != '1')
-			ft_error("yo tes murs");
+			ft_error("le tour de la carte doit être composé de wall(1)");
 		while (*str)
 			str++;
 		str--;
 		if (*str != '1')
-			ft_error("yo tes murs");
+			ft_error("le tour de la carte doit être composé de wall(1)");
 		heightcpy--;
 	}
 	close(fd);
@@ -124,10 +124,10 @@ int	ft_mapname(t_parsing *map)
 
 	fd = open(map->mapfile, O_RDONLY);
 	if (fd == -1)
-		ft_error("mauvais nom de map");
+		ft_error("Nom de carte inexistant");
 	ber = ".ber";
 	str = ft_strrchr(map->mapfile, '.');
 	if (!str || ft_strncmp(str, ber, 7) != 0)
-		ft_error("Ça a pas l'air d'un '.ber' ton affaire");
+		ft_error("Doit être un fichier '.ber'");
 	return (1);
 }

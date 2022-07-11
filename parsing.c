@@ -24,6 +24,7 @@ char	**ft_mapcpy(t_parsing *map)
 		map->mapcpy[i] = ft_strdup(((char *)ft_gnl(map->fd)));
 		i++;
 	}
+	map->mapcpy[i] = NULL;
 	return (map->mapcpy);
 }
 

@@ -21,7 +21,7 @@ SRCS = 	parsing.c \
 LIB = make -C ./libft
 MLX = make -C ./minilibx
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 MLXFLAGS = -framework OpenGl -framework AppKit
 RM = rm -f
 OBJS = $(SRCS:.c=.o)

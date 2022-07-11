@@ -6,7 +6,7 @@
 /*   By: mtrembla <mtrembla@student.42quebec>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 11:18:07 by mtrembla          #+#    #+#             */
-/*   Updated: 2022/07/11 17:07:58 by mtrembla         ###   ########.fr       */
+/*   Updated: 2022/07/11 17:56:09 by mtrembla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,19 @@ int	ft_keyhook(int keycode, t_struct *truc)
 	img = &truc->img;
 	map = &truc->map;
 	if (keycode == 2)
-		ft_right(map, img);
+		ft_right(map, img, truc);
 	if (keycode == 0)
-		ft_left(map, img);
+		ft_left(map, img, truc);
 	if (keycode == 13)
-		ft_up(map, img);
+		ft_up(map, img, truc);
 	if (keycode == 1)
-		ft_down(map, img);
+		ft_down(map, img, truc);
 	if (keycode == 53)
 		ft_bankruptcy(truc);
 	return (0);
 }
 
-void	ft_right(t_parsing *map, t_image *img)
+void	ft_right(t_parsing *map, t_image *img, t_struct *truc)
 {
 	if (ft_collectibles(map->playery, map->playerx + 1, map) != '1')
 	{
@@ -47,11 +47,11 @@ void	ft_right(t_parsing *map, t_image *img)
 			map->playerx * PIXEL, map->playery * PIXEL);
 		if (ft_collectibles(map->playery, map->playerx, map) == 'E'
 			&& map->collectible == 0)
-			exit(0);
+			ft_bankruptcy(truc);
 	}
 }
 
-void	ft_left(t_parsing *map, t_image *img)
+void	ft_left(t_parsing *map, t_image *img, t_struct *truc)
 {
 	if (ft_collectibles(map->playery, map->playerx - 1, map) != '1')
 	{
@@ -66,11 +66,11 @@ void	ft_left(t_parsing *map, t_image *img)
 			map->playerx * PIXEL, map->playery * PIXEL);
 		if (ft_collectibles(map->playery, map->playerx, map) == 'E'
 			&& map->collectible == 0)
-			exit(0);
+			ft_bankruptcy(truc);
 	}
 }
 
-void	ft_up(t_parsing *map, t_image *img)
+void	ft_up(t_parsing *map, t_image *img, t_struct *truc)
 {
 	if (ft_collectibles(map->playery - 1, map->playerx, map) != '1')
 	{
@@ -85,11 +85,11 @@ void	ft_up(t_parsing *map, t_image *img)
 			map->playerx * PIXEL, map->playery * PIXEL);
 		if (ft_collectibles(map->playery, map->playerx, map) == 'E'
 			&& map->collectible == 0)
-			exit(0);
+			ft_bankruptcy(truc);
 	}
 }
 
-void	ft_down(t_parsing *map, t_image *img)
+void	ft_down(t_parsing *map, t_image *img, t_struct *truc)
 {
 	if (ft_collectibles(map->playery + 1, map->playerx, map) != '1')
 	{
@@ -104,6 +104,6 @@ void	ft_down(t_parsing *map, t_image *img)
 			map->playerx * PIXEL, map->playery * PIXEL);
 		if (ft_collectibles(map->playery, map->playerx, map) == 'E'
 			&& map->collectible == 0)
-			exit(0);
+			ft_bankruptcy(truc);
 	}
 }
