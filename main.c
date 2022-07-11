@@ -6,7 +6,7 @@
 /*   By: mtrembla <mtrembla@student.42quebec>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 11:10:51 by mtrembla          #+#    #+#             */
-/*   Updated: 2022/07/11 15:30:42 by mtrembla         ###   ########.fr       */
+/*   Updated: 2022/07/11 16:47:23 by mtrembla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,19 +60,6 @@ void	ft_dinopos(t_image *img, t_parsing *map, int x, int y)
 	map->playery = y;
 }
 
-/*int	ft_tell_me_whats_there(int line, int col, t_parsing *map)
-{
-	line += 1;
-	col +=1;
-	map->fd = open(map->mapfile, O_RDONLY);
-	while(line--)
-		map->str = ((char*)ft_gnl(map->fd));
-	while(--col)
-		map->str++;
-	close(map->fd);
-	return(*map->str);
-}*/
-
 int	main(int argc, char **argv)
 {
 	t_struct	truc;
@@ -84,10 +71,12 @@ int	main(int argc, char **argv)
 	img = &truc.img;
 	ft_i_do_declare(map, img);
 	ft_parsing(argv[1], map);
+	ft_mlx_declare(img);
 	img->mlx_win = mlx_new_window (img->mlx, map->map_len * PIXEL,
 			map->map_height * PIXEL, "so_long");
 	ft_map_print(map, img);
 	ft_mapcpy(map);
 	mlx_key_hook(img->mlx_win, ft_keyhook, &truc);
+	mlx_hook(img->mlx_win, 17, 0, ft_bankruptcy, &truc);
 	mlx_loop(img->mlx);
 }

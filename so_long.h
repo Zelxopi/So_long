@@ -6,14 +6,17 @@
 /*   By: mtrembla <mtrembla@student.42quebec>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 11:29:46 by mtrembla          #+#    #+#             */
-/*   Updated: 2022/07/11 15:27:04 by mtrembla         ###   ########.fr       */
+/*   Updated: 2022/07/11 16:46:50 by mtrembla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
-#include "minilibx/mlx.h"
-#include <fcntl.h>
-#include <stdio.h>
+#ifndef SO_LONG_H
+# define SO_LONG_H
+
+# include "libft/libft.h"
+# include "minilibx/mlx.h"
+# include <fcntl.h>
+# include <stdio.h>
 
 #define PIXEL 70
 
@@ -64,7 +67,6 @@ int		ft_mapname(t_parsing *map);
 void	ft_i_do_declare(t_parsing *map, t_image *img);
 int		ft_parsing(char *k, t_parsing *map);
 void	ft_map_print(t_parsing *map, t_image *img);
-//int 	ft_tell_me_whats_there(int x, int y, t_parsing *map);
 int		ft_keyhook(int keycode, t_struct *truc);
 void	ft_dinopos(t_image *img, t_parsing *map, int x, int y);
 void	ft_right(t_parsing *map, t_image *img);
@@ -74,3 +76,7 @@ void	ft_down(t_parsing *map, t_image *img);
 char	**ft_mapcpy(t_parsing *map);
 int		ft_collectibles(int line, int col, t_parsing *map);
 void	ft_paint(t_image *img, int a);
+int		ft_bankruptcy();
+void	ft_mlx_declare(t_image *img);
+
+#endif
