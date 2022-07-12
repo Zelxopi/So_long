@@ -124,10 +124,10 @@ int	ft_mapname(t_parsing *map)
 	char	c;
 
 	fd = open(map->mapfile, O_RDONLY);
-	if (read(fd, &c, 1) == -1)
-		ft_error("Map is a directory");
 	if (fd == -1)
 		ft_error("Nom de carte inexistant");
+	if (read(fd, &c, 1) == -1)
+		ft_error("Map is a directory");
 	if (!ft_gnl(fd))
 		ft_error("Map is empty");
 	ber = ".ber";
