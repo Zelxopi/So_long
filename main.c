@@ -66,11 +66,12 @@ int	main(int argc, char **argv)
 	t_parsing	*map;
 	t_image		*img;
 
-	(void)argc;
+	if (argc > 1)
+		ft_error("Trop d'arguments");
 	map = &truc.map;
 	img = &truc.img;
 	if (!argv[1])
-	ft_error("Manque nom de carte");
+		ft_error("Manque nom de carte");
 	ft_i_do_declare(map, img);
 	ft_parsing(argv[1], map);
 	ft_mlx_declare(img);
