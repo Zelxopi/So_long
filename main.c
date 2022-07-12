@@ -69,6 +69,8 @@ int	main(int argc, char **argv)
 	(void)argc;
 	map = &truc.map;
 	img = &truc.img;
+	if (!argv[1])
+	ft_error("Manque nom de carte");
 	ft_i_do_declare(map, img);
 	ft_parsing(argv[1], map);
 	ft_mlx_declare(img);
