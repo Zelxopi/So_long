@@ -121,13 +121,19 @@ int	ft_mapname(t_parsing *map)
 	char	*str;
 	char	*ber;
 	int		fd;
+	char	c;
 
 	fd = open(map->mapfile, O_RDONLY);
+	if (read(fd, &c, 1) == -1)
+		ft_error("Map is a directory");
 	if (fd == -1)
 		ft_error("Nom de carte inexistant");
+	if (!ft_gnl(fd))
+		ft_error("Map is empty");
 	ber = ".ber";
 	str = ft_strrchr(map->mapfile, '.');
 	if (!str || ft_strncmp(str, ber, 7) != 0)
 		ft_error("Doit être un fichier '.ber'");
+	close (fd);
 	return (1);
 }
