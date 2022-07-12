@@ -66,7 +66,7 @@ int	main(int argc, char **argv)
 	t_parsing	*map;
 	t_image		*img;
 
-	if (argc > 1)
+	if (argc > 2)
 		ft_error("Trop d'arguments");
 	map = &truc.map;
 	img = &truc.img;
